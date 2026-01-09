@@ -1,0 +1,75 @@
+local player = game:GetService("Players").LocalPlayer
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "BRUTON_NOTICE"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local main = Instance.new("Frame", gui)
+main.Size = UDim2.new(0,360,0,200)
+main.Position = UDim2.new(0.5,-180,0.5,-100)
+main.BackgroundColor3 = Color3.fromRGB(20,60,20)
+main.BackgroundTransparency = 0.35
+main.BorderSizePixel = 0
+main.Active = true
+main.Draggable = true
+
+Instance.new("UICorner", main).CornerRadius = UDim.new(0,14)
+
+local stroke = Instance.new("UIStroke", main)
+stroke.Thickness = 2
+stroke.Color = Color3.fromRGB(0,255,0)
+
+task.spawn(function()
+	while main.Parent do
+		stroke.Color = Color3.fromRGB(0,255,0)
+		task.wait(0.4)
+		stroke.Color = Color3.fromRGB(0,0,0)
+		task.wait(0.4)
+	end
+end)
+
+local title = Instance.new("TextLabel", main)
+title.Size = UDim2.new(1,0,0,36)
+title.BackgroundTransparency = 1
+title.Text = "BRUTON HUB"
+title.Font = Enum.Font.GothamBold
+title.TextScaled = true
+title.TextColor3 = Color3.new(1,1,1)
+
+local box = Instance.new("Frame", main)
+box.Position = UDim2.new(0.05,0,0.22,0)
+box.Size = UDim2.new(0.9,0,0.5,0)
+box.BackgroundColor3 = Color3.fromRGB(0,0,0)
+box.BackgroundTransparency = 0.35
+box.BorderSizePixel = 0
+Instance.new("UICorner", box).CornerRadius = UDim.new(0,10)
+
+local text = Instance.new("TextLabel", box)
+text.Size = UDim2.new(1,-16,1,-16)
+text.Position = UDim2.new(0,8,0,8)
+text.BackgroundTransparency = 1
+text.TextWrapped = true
+text.TextYAlignment = Enum.TextYAlignment.Top
+text.TextXAlignment = Enum.TextXAlignment.Center
+text.Font = Enum.Font.Gotham
+text.TextScaled = true
+text.TextColor3 = Color3.fromRGB(180,255,180)
+text.Text =
+"تم تعطيل سكربت حاليا حتى اخلص إصلاح جميع مشاكل سكربت\n"..
+"يمكن يرجع اليوم وممكن لا\n"..
+"استخدمو سكربت Hexagon حتى يرجع سكربت."
+
+local ok = Instance.new("TextButton", main)
+ok.Size = UDim2.new(0.35,0,0.14,0)
+ok.Position = UDim2.new(0.325,0,0.78,0)
+ok.Text = "موافق"
+ok.Font = Enum.Font.GothamBold
+ok.TextScaled = true
+ok.BackgroundColor3 = Color3.fromRGB(0,180,0)
+ok.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", ok).CornerRadius = UDim.new(0,10)
+
+ok.MouseButton1Click:Connect(function()
+	gui:Destroy()
+end)
